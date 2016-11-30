@@ -4,14 +4,9 @@ implements Comparable<LibraryBook>{
 private String callNumber;
 
 
-  public LibraryBook(){
-    super();
-  }
   public LibraryBook(String newAuthor, String newTitle, String newISBN,
                      String newcallNumber){
-    super.setAuthor(newAuthor);
-    super.setTitle(newTitle);
-    super.setISBN(newISBN);
+  super(newAuthor, newTitle, newISBN);
     callNumber = newcallNumber;
   }
   public boolean setAuthor(String newAuthor){
@@ -41,6 +36,23 @@ private String callNumber;
   }
   public String getcallNumber(){
   return callNumber;
+  }
+
+  abstract void checkout(String patron, String due);
+  abstract void returned();
+  abstract String circulationStaus();
+
+  public int compareTo(LibraryBook o){
+    if(getcallNumber().equals(o.getcallNumber())){
+      return 0;
+    }
+    else if ((getcallNumber().compareTo(o.getcallNumber()) < 0)) {
+      return -1;
+    }
+    else{ return 1;}
+  }
+  public String toString(){
+    return super.toString() + ", " + callNumber;
   }
   public static void main(String[] args) {
 
