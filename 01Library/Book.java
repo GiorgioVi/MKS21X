@@ -4,33 +4,32 @@ private String title;
 private String isbn;
 
 public Book(){
-
 };
 public Book(String newAuthor, String newTitle, String newISBN){
   author = newAuthor;
   title = newTitle;
   isbn = newISBN;
 }
-private boolean SetAuthor(String newAuthor){
+public boolean setAuthor(String newAuthor){
 author = newAuthor;
 return true;
 }
-private boolean SetTitle(String newTitle){
+public boolean setTitle(String newTitle){
 title = newTitle;
 return true;
 }
-private boolean SetISBN(String newISBN){
+public boolean setISBN(String newISBN){
 isbn = newISBN;
 return true;
 }
-private String getAuthor(){
+public String getAuthor(){
 
 return author;
 }
-private String getTitle(){
+public String getTitle(){
 return title;
 }
-private String getISBN(){
+public String getISBN(){
 return isbn;
 }
 
