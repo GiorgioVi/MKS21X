@@ -13,17 +13,18 @@ public Barcode(String zip){
 	if(zip.length() != 5){ throw new RuntimeException();}
 	_zip = zip;
 }
-public Barcode clone(){
-}
-
-
-
-public int compareTo(Barcode other){
+public String toString(){
 
 }
-
-private int CheckSum(){ 
+public String compareTo(String zipp){
 
 }
 
+public static String toZip(String code){
+
+}
+
+public static String(String zip){
+	
+}
 }
