@@ -32,11 +32,14 @@ return "the zip:" + _zip + checkSum(_zip) +"\nBarcode:"
 + toCode(_zip);
 }
 
-
-
-
 public static String toCode(String zip){
 	String zipcode = zip + checkSum(zip);
+
+	if(zipcode.length() != 6){ throw new IllegalArgumentException();}
+	try { Integer.parseInt(zipcode);
+	      }catch (NumberFormatException e) {
+		   throw new IllegalArgumentException();
+	       }
 	int counter = 0;
 	String bar = "|";
 	while(counter < zipcode.length()){
@@ -67,19 +70,52 @@ public static String toCode(String zip){
 return bar + "|";
 }
 
-public static String toZip(String zip){
-return "bb";
+public static String toZip(String code){
+	if(code.length() != 32){throw new IllegalArgumentException();}
+	if(code.charAt(0) != '|' || code.charAt(31) != '|'){
+	    throw new IllegalArgumentException();}
+	for (int i = 0 ; i < code.length() ; i ++) {
+			 if (code.charAt(i) != ':' && code.charAt(i) != '|') {
+				  throw new IllegalArgumentException();
+						 }
+					 }
+String zipcode = "";
+String codeV2 = code.substring(1,31);
+for(int groupings = 0; groupings < 6; groupings++){
+	    String num = codeV2.substring(groupings*5, groupings*5 + 5);
+	    if(num.compareTo("||:::") == 0){
+					zipcode += "0";
+	    } else if(num.compareTo(":::||") == 0){
+	        zipcode += "1";
+	    } else if(num.compareTo("::|:|") == 0){
+	        zipcode += "2";
+	    } else if(num.compareTo("::||:") == 0){
+	        zipcode += "3";
+	    } else if(num.compareTo(":|::|") == 0){
+	        zipcode += "4";
+	    } else if(num.compareTo(":|:|:") == 0){
+	        zipcode += "5";
+	    } else if(num.compareTo(":||::") == 0){
+	        zipcode += "6";
+	    } else if(num.compareTo("|:::|") == 0){
+	        zipcode += "7";
+	    } else if(num.compareTo("|::|:") == 0){
+	        zipcode += "8";
+	    } else if(num.compareTo("|:|::") == 0){
+	        zipcode += "9";
+	    }
+}
+if(checkSum(zipcode.substring(0,5)) != (Integer.parseInt(zipcode) % 10)){
+	throw new IllegalArgumentException();
+}
+return zipcode.substring(0,5);
 }
 
 public int compareTo(Barcode o){
 return _zip.compareTo(o._zip);
 }
+
 public static void main(String[] args) {
-	Barcode pizza = new Barcode("08451");
-	Barcode crust = new Barcode("00000");
-	System.out.println(pizza.checkSum("08451"));
-	System.out.println(pizza.toString());
-	System.out.println(crust.compareTo(pizza));
-	System.out.println(pizza.toCode("08451"));
+
 }
 }
