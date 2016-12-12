@@ -43,7 +43,7 @@ public static String toCode(String zip){
 	int counter = 0;
 	String bar = "|";
 	while(counter < zipcode.length()){
-		switch(zipcode.charAt(counter)){
+	switch(zipcode.charAt(counter)){
 			case '1':bar += ":::||";
 			break;
       case '2':bar += "::|:|";
@@ -79,36 +79,36 @@ public static String toZip(String code){
 				  throw new IllegalArgumentException();
 						 }
 					 }
-String zipcode = "";
-String codeV2 = code.substring(1,31);
-for(int groupings = 0; groupings < 6; groupings++){
-	    String num = codeV2.substring(groupings*5, groupings*5 + 5);
-	    if(num.compareTo("||:::") == 0){
+			String zipcode = "";
+   	  String codeV2 = code.substring(1,31);
+	 for(int groupings = 0; groupings < 6; groupings++){
+	    String group = codeV2.substring(groupings*5, groupings*5 + 5);
+	    if(group.compareTo("||:::") == 0){
 					zipcode += "0";
-	    } else if(num.compareTo(":::||") == 0){
+	    } else if(group.compareTo(":::||") == 0){
 	        zipcode += "1";
-	    } else if(num.compareTo("::|:|") == 0){
+	    } else if(group.compareTo("::|:|") == 0){
 	        zipcode += "2";
-	    } else if(num.compareTo("::||:") == 0){
+	    } else if(group.compareTo("::||:") == 0){
 	        zipcode += "3";
-	    } else if(num.compareTo(":|::|") == 0){
+	    } else if(group.compareTo(":|::|") == 0){
 	        zipcode += "4";
-	    } else if(num.compareTo(":|:|:") == 0){
+	    } else if(group.compareTo(":|:|:") == 0){
 	        zipcode += "5";
-	    } else if(num.compareTo(":||::") == 0){
+	    } else if(group.compareTo(":||::") == 0){
 	        zipcode += "6";
-	    } else if(num.compareTo("|:::|") == 0){
+	    } else if(group.compareTo("|:::|") == 0){
 	        zipcode += "7";
-	    } else if(num.compareTo("|::|:") == 0){
+	    } else if(group.compareTo("|::|:") == 0){
 	        zipcode += "8";
-	    } else if(num.compareTo("|:|::") == 0){
+	    } else if(group.compareTo("|:|::") == 0){
 	        zipcode += "9";
 	    }
 }
 if(checkSum(zipcode.substring(0,5)) != (Integer.parseInt(zipcode) % 10)){
 	throw new IllegalArgumentException();
 }
-return zipcode.substring(0,5);
+	return zipcode.substring(0,5);
 }
 
 public int compareTo(Barcode o){
