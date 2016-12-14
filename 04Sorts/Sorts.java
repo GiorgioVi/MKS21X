@@ -8,11 +8,10 @@ public static void selectionSort(int[] data){
     int temp;
 	for(int i = 0; i < data.length - 1; i++){
 		for(int c = 0; c < data.length - 1;c++){
-
             if(data[c] > data[c + 1]){
-						temp = data[c];
-            data[c] = data[c+1];
-            data[c+1] = temp;
+							temp = data[c];
+            	data[c] = data[c+1];
+            	data[c+1] = temp;
 		}
 }
 }
