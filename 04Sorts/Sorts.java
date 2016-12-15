@@ -9,10 +9,10 @@ public static void selectionSort(int[] data){
     int temp;
 	for(int i = 0; i < data.length - 1; i++){
 		for(int c = 0; c < data.length - 1;c++){
-            if(data[c] > data[c - 1]){
+                  if(data[c] > data[c - 1]){
 		        temp = data[c];
-            	data[c] = data[c - 1];
-            	data[c-1] = temp;
+                    	data[c] = data[c - 1];
+            	        data[c-1] = temp;
 		}
 }
 }
@@ -21,7 +21,6 @@ public static void selectionSort(int[] data){
 
 
 public static void insertionSort(int[] data){
-	
 	for(int i = 1; i < data.length; i ++){
 	 	for(int c = 0; c < data.length; c++){
 			int x = 0;
@@ -32,10 +31,25 @@ public static void insertionSort(int[] data){
 		}	
 			
 }
-}}
+}
+}
+
+public static void bubbleSort(int[] data){
+	int swap = 0;
+	while(swap != 1){
+		for(int i = 0; i < data.length - 1){
+
+				
+
+	
+}
+}  
+
+
+
 public static void main(String [] argghhhhh){
 	int[] tester = {7,4,5,8,2,3};
-	insertionSort(tester);
+	bubbleSort(tester);
 	System.out.println(tester[0]);
 	System.out.println(tester[1]);
 	System.out.println(tester[2]);
