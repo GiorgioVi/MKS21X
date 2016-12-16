@@ -38,8 +38,7 @@ public static void insertionSort(int[] data){
 public static void bubbleSort(int[] data){
 	boolean swap = true;
 	while(swap){
-		swap = false;
-        for(int i = 1; i < data.length;i++){    
+		for(int i = 1; i < data.length;i++){
             int temp = 0;
             if(data[i-1] > data[i]){
                 temp = data[i - 1];
